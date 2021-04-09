@@ -1,0 +1,21 @@
+<%- include('includes/head.ejs'); %>
+<main>
+    <section class="chatContainer">
+        <h1>Team chat</h1>
+        <h5>Connected Users : <span id="connectedUsers">#</span></h5>
+        <span class="typingStatus"></span>
+        <div class="chatBoxItem messages">
+            <ul></ul>
+        </div>
+
+        <form class="chatBoxItem inputUser">
+            <label for="userName"> Your name </label>
+            <input type="text" id="userName" placeholder="Your name">
+            <label for="newMessage"> Message </label>
+            <input id="newMessage" type="text" placeholder="message" />
+            <button type="submit">Send</button>
+        </form>
+    </section>
+
+</main>
+<%- include('includes/footer.ejs'); %>

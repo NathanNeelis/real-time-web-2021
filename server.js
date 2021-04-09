@@ -8,12 +8,18 @@ const port = process.env.PORT || 8080;
 
 app.use(express.static(path.resolve("public")));
 
-// app.get("/", home)
+app.set('view engine', 'ejs') // templating engine = ejs
+    .set('views', 'views') // find the views in views(route)
+    .get("/", home)
 
+
+function home(req, res) {
+    res.render("home.ejs");
+}
 
 let connectedUsers = 0; // users currently connected
 
-
+// WEB SOCKETS
 io.on("connection", (socket) => {
     // console.log(`User with this socket ID: ${socket.id} just connected`);
     connectedUsers++ // increases users connected

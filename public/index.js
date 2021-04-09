@@ -46,9 +46,6 @@ function createLine(userName, message) {
     if (userName === localStorage.getItem("userName")) {
         element.classList.add("rightSide");
         msg.textContent = "You: " + message;
-        //   element.style.color = '#363163'
-        //   element.style.borderColor = '#363163'
-        //   element.style.background = 'rgb(54,49,99, 0.2)'
     } else {
         msg.textContent = userName + `: ` + message;
     }
@@ -68,21 +65,15 @@ userNameInput.addEventListener("change", () => {
     localStorage.setItem("userName", userNameInput.value);
 })
 
+// IF NOT A FORM 
 // on enter click
-inputMsg.addEventListener("keyup", (event) => {
-    if (event.key === "Enter") {
-        sendMessage();
-        sendAnimation(inputMsg)
-    }
-})
+// inputMsg.addEventListener("keyup", (event) => {
+//     if (event.key === "Enter") {
+//         sendMessage();
+//         sendAnimation(inputMsg)
+//     }
+// })
 
-// on enter click
-inputMsg.addEventListener("keyup", (event) => {
-    if (event.key === "Enter") {
-        sendMessage();
-        sendAnimation(inputMsg)
-    }
-})
 
 function sendAnimation(el) {
     el.classList.add("messageSend")
