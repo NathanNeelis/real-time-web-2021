@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css">
+    <title>Team Chat App</title>
+
+
+    <!-- FONTS  -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;700&display=swap" rel="stylesheet">
+
+  </head>
+  <body>
+    <main>
+      <div class="chatContainer">
+        <div class="chatBoxItem title"><h1>Team chat</h1> <h5>Connected Users : <span id="connectedUsers">#</span></h5>
+          <span class="typingStatus"></span>
+        <div class="chatBoxItem messages">
+            <ul></ul>
+        </div>
+
+        <div class="chatBoxItem inputUser">
+            <label for="userName">
+                  Your name
+                
+            </label>
+            <input type="text" id="userName" placeholder="Your name">
+            <label for="newMessage">
+              Message  
+              </label>
+              <input id="newMessage" type="text" placeholder="message"/>
+              <a href="javascript:void(0)" class="recordAudioBtn">Record audio</a>
+              <a href="javascript:void(0)" class="stopRecord">Stop recording</a>
+              <div class="audioContainer">
+
+              </div>
+            <button type="submit">Send</button>
+        </div>
+      </div>
+    </main>
+  </body>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="index.js"></script>
+</html>
