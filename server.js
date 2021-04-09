@@ -38,7 +38,7 @@ io.on("connection", (socket) => {
             socketID: socket.id,
         };
 
-        console.log('message', msgObj)
+        // console.log('message', msgObj)
 
         // Add message real time
         io.emit("message", msgObj);
