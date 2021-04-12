@@ -75,26 +75,24 @@ This is a totally other concept then the previous two. I got inspired by Stan O 
 
 
 ## Project status 
-* ✅  Render hello world server side   
-* ✅  Decide on concept
-* ❌  Work out data lifecycle
-* ❌  dataflow diagram?
-  
-* ❌  Nut to crack: user in grid-layout choosing different positions
-  
-* ❌  Create a grid layout 
-* ❌  Add users -- how to multiple?
-* ❌  Online rooms?
-* ❌  Upload a map
-* ❌  Add real time choosing a position on map
-* ❌  Chat room
-* ❌  Dice API
-* ❌  Dice function in chatroom
+* [x] Render hello world server side   
+* [x] Decide on concept
+* [ ] Work out data lifecycle
+* [ ]  dataflow diagram?
+* [ ] Nut to crack: user in grid-layout choosing different position 
+* [ ] Create a grid layout 
+* [ ] Add users -- how to multiple?
+* [ ]  Online rooms?
+* [ ]  Upload a map
+* [ ] Add real time choosing a position on map
+* [ ]  Chat room
+* [ ]  Dice API
+* [ ] Dice function in chatroom
   
 nice to have  
-* ❌  Camera function?
-* ❌  SHow all users online
-* ❌  ..
+* [ ]  Camera function?
+* [ ]  SHow all users online
+* [ ]  ..
 
 
 
