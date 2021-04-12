@@ -4,10 +4,16 @@
 :earth_americas:  [live website]()  
 
 ## Description
+DnD Playground  
+This app is made for Dungeon and Dragons groups that have use for an online tool.
+Since Corona we are limited in playing DnD in groups, so often groups go online to continue their quests online.
+In this app you can upload your own map and your friends can join you. Everyone gets their character on screen with a collored dot.
+You can move around in the map by clicking on the grid. There is also a chat function that lets you share your notes and roll the dice using a dice API.
 
 ## Table of Contents  
 
 ## Assignment
+This is a readme driven project. Which means that I first figure out what I want to make and document this in my readme. The application I am making is based on user interaction and works real time for multiple users. 
 
 ## Concepts
 Before starting with this assignment I though of 3 concepts.  
