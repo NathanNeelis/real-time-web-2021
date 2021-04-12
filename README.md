@@ -78,18 +78,18 @@ This is a totally other concept then the previous two. I got inspired by Stan O 
 * [x] Render hello world server side   
 * [x] Decide on concept
 * [ ] Work out data lifecycle
-* [ ]  dataflow diagram?
-* [ ] Nut to crack: user in grid-layout choosing different position 
+* [ ] dataflow diagram?
+* [ ] **Nut to crack:** user in grid-layout choosing different position 
 * [ ] Create a grid layout 
 * [ ] Add users -- how to multiple?
-* [ ]  Online rooms?
-* [ ]  Upload a map
+* [ ] Online rooms?
+* [ ] Upload a map
 * [ ] Add real time choosing a position on map
-* [ ]  Chat room
-* [ ]  Dice API
+* [ ] Chat room
+* [ ] [Dice API](http://roll.diceapi.com/)
 * [ ] Dice function in chatroom
   
-nice to have  
+Nice to have
 * [ ]  Camera function?
 * [ ]  SHow all users online
 * [ ]  ..
