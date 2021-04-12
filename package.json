@@ -1,0 +1,30 @@
+{
+  "name": "real-time-web-2021",
+  "version": "1.0.0",
+  "description": "### View the app :earth_americas:  [live website]()",
+  "main": "server.js",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "node-fetch": "^2.6.1",
+    "socket.io": "^4.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  },
+  "scripts": {
+    "test": "test",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NathanNeelis/real-time-web-2021.git"
+  },
+  "author": "Nathan Neelis",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/NathanNeelis/real-time-web-2021/issues"
+  },
+  "homepage": "https://github.com/NathanNeelis/real-time-web-2021#readme"
+}
