@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/style.css">
+    <title>DnD playground</title>
+
+    <script src="js/roomScript.js" defer></script>
+</head>
+
+<body>
+    <div class="roomsWrapper">
+        <section class="joinRoom">
+            <h2>Join a room</h2>
+            <div class="createRoomWrapper">
+                <form action="/playground" method="GET" class="joinRoomForm" name="newRoojoinRoomFormorm">
+                    <label for="roomID"> Room id: </label>
+                    <input type="text" id="roomID" name="roomid" placeholder="Ask the creator for a room ID">
+                    <div>
+                        <button type="submit" id="joinRoom">Join room</button>
+                        <button type="submit" id="createRoom">Create room</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+    </div>
+
+</body>
+
+</html>

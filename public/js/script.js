@@ -2,41 +2,54 @@ const socket = io();
 
 const gridItem = document.querySelectorAll('.dndMap li')
 
+const room = Qs.parse(location.search, {
+    ignoreQueryPrefix: true
+});
+
+console.log(location.search)
+
+console.log(room)
+
+if (room) {
+    socket.emit("roomID", room);
+}
+
+// Event listener for each grid item
 gridItem.forEach(element => {
-    element.addEventListener('click', doSomething)
+    element.addEventListener('click', sendLocation)
 
-    function doSomething() {
+    function sendLocation() {
 
-        if (localStorage.getItem("userName")) {
-            const userName = localStorage.getItem("userName");
+        if (localStorage.getItem("username")) {
+            const username = localStorage.getItem("username");
             const colorSelected = localStorage.getItem("selectedColor")
 
 
             // do something realtime
             // console.log('Column', element.dataset.column, '   ', 'row', element.dataset.row)
-            const playerLocation = {
+            const playerObj = {
                 column: element.dataset.column,
                 row: element.dataset.row,
                 color: colorSelected,
-                username: userName
+                username: username
             }
 
-            socket.emit("location", playerLocation);
+            socket.emit("location", playerObj);
         }
     }
 })
 
-socket.on("location", (playerLocation) => {
-    newLocation(playerLocation);
+socket.on("location", (playerObj) => {
+    newLocation(playerObj);
 });
 
 
 // CREATE LOCATION FOR ALL PLAYERS 
-function newLocation(playerLocation) {
+function newLocation(playerObj) {
     // console.log('this is player location', playerLocation)
 
     // Remove old item 
-    const previousCircle = document.getElementById(playerLocation.username)
+    const previousCircle = document.getElementById(playerObj.username)
     // console.log('this item needs to be removed', thisItem)
     if (previousCircle) {
         removeOldItem(previousCircle)
@@ -44,9 +57,9 @@ function newLocation(playerLocation) {
 
     // create new circle
     gridItem.forEach(element => {
-        if (element.dataset.column === playerLocation.column && element.dataset.row === playerLocation.row) {
+        if (element.dataset.column === playerObj.column && element.dataset.row === playerObj.row) {
             // console.log('target element', element)
-            addNewItem(element, playerLocation)
+            addNewItem(element, playerObj)
         }
 
     })
@@ -58,67 +71,37 @@ function removeOldItem(item) {
 }
 
 // new circle 
-function addNewItem(newItem, playerLocation) {
+function addNewItem(newItem, playerObj) {
     let newCircle = document.createElement("div");
     newCircle.classList.add('player')
-    newCircle.setAttribute("id", playerLocation.username);
+    newCircle.setAttribute("id", playerObj.username);
 
     newItem.appendChild(newCircle);
 
-    document.getElementById(playerLocation.username).style.backgroundColor = playerLocation.color;
+    document.getElementById(playerObj.username).style.backgroundColor = playerObj.color;
 }
 
-const sendBtn = document.querySelector(".usernameForm button");
-const inputUserName = document.querySelector("input#userName")
+
+const inputUsername = document.querySelector("input#username")
 const color = document.getElementById('playerColor');
 
-sendBtn.addEventListener("click", (e) => {
-    e.preventDefault()
-    sendMessage();
-});
-
-function sendMessage() {
-    if (inputUserName.value) {
-        const userObj = {
-            userName: inputUserName.value,
-            color: color.value
-        };
-        socket.emit("userName", userObj);
-    } else if (!inputUserName.value) {
-        alert("Vul eerst je username in!");
-    }
-}
 
 
 // LOCAL STORAGE USERNAME
-if (localStorage.getItem("userName")) {
-    inputUserName.value = localStorage.getItem("userName");
+if (localStorage.getItem("username")) {
+    inputUsername.value = localStorage.getItem("username");
 }
 
 
-inputUserName.addEventListener("change", () => {
-    localStorage.setItem("userName", inputUserName.value);
+inputUsername.addEventListener("change", () => {
+    localStorage.setItem("username", inputUsername.value);
 })
 
-
-// user ID connected
-// socket.on('userID', (userID) => {
-//     console.log('the user id', userID)
-// })
-
-// username connected
-socket.on('userName', (userObj) => {
-    console.log('user object', userObj)
-})
-
-// LOCAL STORAGE USERNAME
+// LOCAL STORAGE Color
 if (localStorage.getItem("selectedColor")) {
     color.value = localStorage.getItem("selectedColor");
 }
 
-
-
 color.addEventListener("change", () => {
     localStorage.setItem("selectedColor", color.value);
-    console.log(color.value)
 })

@@ -9,21 +9,52 @@ require("dotenv").config();
 
 
 // import routes
-const home = require('./renderFunctions/home');
-
+const login = require('./renderFunctions/login');
+const playground = require('./renderFunctions/playground');
+const room = require('./renderFunctions/room');
 
 
 // EXPRESS ROUTeS
 app.use(express.static(path.resolve("public")));
 
 // Routing
-app.get("/", home)
-
+app.get("/", login)
+    .get("/room", room)
+    .get("/playground", playground)
+// app.post("/", postLogin)
 
 // WEBSOCKET
 io.on("connection", (socket) => {
 
     console.log(`User with this socket ID: ${socket.id} just connected`);
+
+    // create room
+    socket.on("roomID", (room) => {
+
+        const roomID = room.roomid
+
+        // connect to room
+        socket.join(roomID);
+        console.log('you have joined id:', roomID)
+
+        socket.on("location", (playerLocation) => {
+
+
+            // connect with datasbase? 
+            // save player object to database
+
+            // extract player object from database
+            // send player object back to client
+
+            // make a validation on grid
+            console.log('player location', playerLocation)
+
+            // Add message real time
+            io.to(roomID).emit("location", playerLocation);
+        });
+
+
+    });
 
     socket.on('disconnect', () => { // on disconnect
         console.log('user disconnected')
@@ -33,28 +64,21 @@ io.on("connection", (socket) => {
     // let userID = socket.id
     // io.emit('userID', userID)
 
-    socket.on("userName", (userObj) => {
-        // ads socket ID to message object
-        userObj = {
-            userName: userObj.userName,
-            color: userObj.color,
-            socketID: socket.id,
-        };
+    // socket.on("userName", (userObj) => {
+    //     // ads socket ID to message object
+    //     userObj = {
+    //         userName: userObj.userName,
+    //         color: userObj.color,
+    //         socketID: socket.id,
+    //     };
 
-        console.log('user', userObj)
+    //     console.log('user', userObj)
 
-        // Add message real time
-        io.emit("userName", userObj);
-    });
-
-    socket.on("location", (playerLocation) => {
+    //     // Add message real time
+    //     io.emit("userName", userObj);
+    // });
 
 
-        console.log('player location', playerLocation)
-
-        // Add message real time
-        io.emit("location", playerLocation);
-    });
 
 });
 
