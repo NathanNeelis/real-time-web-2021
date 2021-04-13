@@ -11,25 +11,9 @@ gridItem.forEach(element => {
             const userName = localStorage.getItem("userName");
             const colorSelected = localStorage.getItem("selectedColor")
 
-            gridItem.forEach(allElements => {
-                const thisItem = document.querySelector('.playerOne')
-
-                if (thisItem) {
-                    thisItem.remove();
-                }
-            })
-
-
-            let newCircle = document.createElement("div");
-            newCircle.classList.add('playerOne')
-            newCircle.setAttribute("id", userName);
-            element.appendChild(newCircle);
-
-            document.querySelector('.playerOne').style.backgroundColor = colorSelected;
-
 
             // do something realtime
-            console.log('Column', element.dataset.column, '   ', 'row', element.dataset.row)
+            // console.log('Column', element.dataset.column, '   ', 'row', element.dataset.row)
             const playerLocation = {
                 column: element.dataset.column,
                 row: element.dataset.row,
@@ -37,12 +21,52 @@ gridItem.forEach(element => {
                 username: userName
             }
 
-            console.log('player location', playerLocation)
             socket.emit("location", playerLocation);
         }
     }
 })
 
+socket.on("location", (playerLocation) => {
+    newLocation(playerLocation);
+});
+
+
+// CREATE LOCATION FOR ALL PLAYERS 
+function newLocation(playerLocation) {
+    // console.log('this is player location', playerLocation)
+
+    // Remove old item 
+    const previousCircle = document.getElementById(playerLocation.username)
+    // console.log('this item needs to be removed', thisItem)
+    if (previousCircle) {
+        removeOldItem(previousCircle)
+    }
+
+    // create new circle
+    gridItem.forEach(element => {
+        if (element.dataset.column === playerLocation.column && element.dataset.row === playerLocation.row) {
+            // console.log('target element', element)
+            addNewItem(element, playerLocation)
+        }
+
+    })
+}
+
+// remove old circle
+function removeOldItem(item) {
+    item.remove();
+}
+
+// new circle 
+function addNewItem(newItem, playerLocation) {
+    let newCircle = document.createElement("div");
+    newCircle.classList.add('player')
+    newCircle.setAttribute("id", playerLocation.username);
+
+    newItem.appendChild(newCircle);
+
+    document.getElementById(playerLocation.username).style.backgroundColor = playerLocation.color;
+}
 
 const sendBtn = document.querySelector(".usernameForm button");
 const inputUserName = document.querySelector("input#userName")

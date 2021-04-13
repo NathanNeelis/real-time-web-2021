@@ -47,6 +47,15 @@ io.on("connection", (socket) => {
         io.emit("userName", userObj);
     });
 
+    socket.on("location", (playerLocation) => {
+
+
+        console.log('player location', playerLocation)
+
+        // Add message real time
+        io.emit("location", playerLocation);
+    });
+
 });
 
 
