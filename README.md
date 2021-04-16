@@ -1,7 +1,7 @@
 # Real-Time Web @cmda-minor-web · 2020/21
 
 ### View the app
-:earth_americas:  [live website]()  
+:earth_americas:  [live website](https://dnd-playground.herokuapp.com/)  
 
 ## Description
 DnD Playground  
@@ -61,8 +61,8 @@ This is a totally other concept then the previous two. I got inspired by Stan O 
 
 
 ### Data lifecycle
-Not yet done... but something like this.
-  ![data-lifecycle](https://user-images.githubusercontent.com/55492381/114989155-7085cf80-9e97-11eb-914f-3cb6f717a63b.jpg)
+Not yet done... but something like this.  
+![data-lifecycle](https://user-images.githubusercontent.com/55492381/114989155-7085cf80-9e97-11eb-914f-3cb6f717a63b.jpg)
 
 ### Features
 #### Rooms
