@@ -61,30 +61,33 @@ This is a totally other concept then the previous two. I got inspired by Stan O 
 
 
 ### Data lifecycle
--- illustration --   
+Not yet done... but something like this.
+  ![data-lifecycle](https://user-images.githubusercontent.com/55492381/114989155-7085cf80-9e97-11eb-914f-3cb6f717a63b.jpg)
 
 ### Features
-#### Oauth
+#### Rooms
+Enter a room to use this application with just your friends
 
-#### Comments on photo's
+#### Choose realtime position
+You can click on the grid map to change your position realtime. This way the other players know of your movements.
 
-#### Map where photos' are uploaded
-* On upload location api?
-* Gather location from photograph meta deta? How?
+#### Chat 
+Share your notes in the chat
 
+#### Dice
+Use the dice function to throw the dice and calculate the result
 
 
 ## Project status 
 * [x] Render hello world server side   
 * [x] Decide on concept
 * [ ] Work out data lifecycle
-* [ ] dataflow diagram?
-* [ ] **Nut to crack:** user in grid-layout choosing different position 
-* [ ] Create a grid layout 
-* [ ] Add users -- how to multiple?
-* [ ] Online rooms?
+* [x] **Nut to crack:** user in grid-layout choosing different position 
+* [x] Create a grid layout 
+* [x] Add users -- how to multiple?
+* [x] Online rooms?
 * [ ] Upload a map
-* [ ] Add real time choosing a position on map
+* [x] Add real time choosing a position on map
 * [ ] Chat room
 * [ ] [Dice API](http://roll.diceapi.com/)
 * [ ] Dice function in chatroom
