@@ -1,6 +1,5 @@
-const socket = io();
-
-
+// Some code to fix fetching from HTTP on a HTTPS website.
+// resource: https://stackoverflow.com/a/63044435/14601099
 if (window.location.protocol.indexOf('https') == 0) {
     var el = document.createElement('meta')
     el.setAttribute('http-equiv', 'Content-Security-Policy')
@@ -9,15 +8,13 @@ if (window.location.protocol.indexOf('https') == 0) {
 }
 
 
+const socket = io();
 const gridItem = document.querySelectorAll('.dndMap li')
 
+// makes an object of the search parameter in url
 const room = Qs.parse(location.search, {
     ignoreQueryPrefix: true
 });
-
-
-// console.log(location.search)
-// console.log(room)
 
 if (room) {
     socket.emit("roomID", room);
@@ -194,6 +191,7 @@ throwDice.addEventListener("click", (e) => {
 });
 
 
+// EMIT DICE TO SERVER
 function sendDice(amount, selectedDie) {
     // if dice amount is 0
     if (amount === '0') {
@@ -232,7 +230,7 @@ function sendDice(amount, selectedDie) {
 }
 
 
-// die socket creating die messages
+// dice socket creating die messages
 socket.on("dice", (dice) => {
     const selectedDie = dice.dice
     const result = dice.result

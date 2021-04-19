@@ -48,8 +48,15 @@ io.on("connection", (socket) => {
             // make a validation on grid
             console.log('player location', playerLocation)
 
-            // Add message real time
-            io.to(roomID).emit("location", playerLocation);
+            if (playerLocation.column <= 15 && playerLocation.row <= 10) {
+                // Add message real time
+                io.to(roomID).emit("location", playerLocation);
+            } else {
+                console.error('there has been an error in the playerlocation', playerLocation)
+            }
+
+
+
 
         });
 
@@ -79,26 +86,6 @@ io.on("connection", (socket) => {
     socket.on('disconnect', () => { // on disconnect
         console.log('user disconnected')
     })
-
-
-    // let userID = socket.id
-    // io.emit('userID', userID)
-
-    // socket.on("userName", (userObj) => {
-    //     // ads socket ID to message object
-    //     userObj = {
-    //         userName: userObj.userName,
-    //         color: userObj.color,
-    //         socketID: socket.id,
-    //     };
-
-    //     console.log('user', userObj)
-
-    //     // Add message real time
-    //     io.emit("userName", userObj);
-    // });
-
-
 
 });
 
