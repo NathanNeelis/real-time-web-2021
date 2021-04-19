@@ -178,12 +178,13 @@ Nice to have
 Today 19-04  
 * [x] Chatfunction
 * [x] Dice function
-* [ ] Update DLC diagram  
+* [x] Update DLC diagram  
   
 Tommorow 20-04  
 * [ ] Login with database (mongo or firebase?)
 * [ ] set background image
 * [ ] Admin per room?  
+* [ ] Update DLC diagram 
   
 Friday 23-04  
 * [ ] Finish readme
