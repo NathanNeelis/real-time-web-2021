@@ -78,6 +78,70 @@ Share your notes in the chat
 Use the dice function to throw the dice and calculate the result
 
 
+### API
+#### Which API did I use?
+In the chatbox you are able to throw some dice.  
+For this functionality I used the [Dice API](http://roll.diceapi.com/), It was just a litle bit easier then coding it myself. And I wanted to see if I could implement an API to learn from this progress.
+
+#### Fetching the API
+Based on the dice and amount of dices it changes the fetch url.   
+So for example, I would choose the d20 die and I want to throw 3 of them. The endpoint results in /3d20.  
+  
+> Endpoint: http://roll.diceapi.com/json/  
+> Parameter 1: amount of dice  
+> Parameter 2: sort dice  
+
+
+```javascript
+    // if everything is ok
+    else if (selectedDice && amount) {
+
+        const username = localStorage.getItem("username");
+        const endpoint = "http://roll.diceapi.com/json/"
+
+        // fetch dice api
+        const url = endpoint + amount + selectedDie
+
+        // result in const
+        getData(url)
+            .then(data => {
+                const dice = {
+                    dice: selectedDie,
+                    amount: amount,
+                    result: data.dice,
+                    username: username
+                };
+
+                socket.emit("dice", dice);
+            })
+
+        amount.value = "";
+    }
+
+```
+
+#### API Response
+The api response with a succes and the thrown dices like this:  
+```json
+{   
+    "success":true,
+    "dice":[
+        {
+            "value":12,
+            "type":"d20"
+        },
+        {
+            "value":16,
+            "type":"d20"},
+        {
+            "value":6,
+            "type":"d20"
+        }
+    ]
+}
+
+```
+
 ## Project status 
 * [x] Render hello world server side   
 * [x] Decide on concept
@@ -88,17 +152,30 @@ Use the dice function to throw the dice and calculate the result
 * [x] Online rooms?
 * [ ] Upload a map
 * [x] Add real time choosing a position on map
-* [ ] Chat room
-* [ ] [Dice API](http://roll.diceapi.com/)
-* [ ] Dice function in chatroom
+* [x] Chat room
+* [x] [Dice API](http://roll.diceapi.com/)
+* [x] Dice function in chatroom
   
-Nice to have
+Nice to have  
 * [ ]  Camera function?
 * [ ]  SHow all users online
-* [ ]  ..
-
-
-
+* [ ]  ..  
+  
+Today:  
+* [x] Chatfunction
+* [x] Dice function
+* [ ] Update DLC diagram  
+  
+Tommorow:  
+* [ ] Login with database (mongo or firebase?)
+* [ ] set background image
+* [ ] Admin per room?  
+  
+Friday:   
+* [ ] Finish readme
+* [ ] Read rubric
+* [ ] Prepare exam  
+  
 
 
 ## License
