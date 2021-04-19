@@ -65,8 +65,17 @@ This is a totally other concept then the previous two. I got inspired by Stan O 
 
 
 ## Data lifecycle
-Not yet done... but something like this.  
-![data-lifecycle](https://user-images.githubusercontent.com/55492381/114989155-7085cf80-9e97-11eb-914f-3cb6f717a63b.jpg)
+Not yet done... but something like this. 
+
+<details>
+  <summary>DLC Versie 1</summary
+
+![data-lifecycle](https://user-images.githubusercontent.com/55492381/114989155-7085cf80-9e97-11eb-914f-3cb6f717a63b.jpg)  
+
+</details>
+  
+Version 2  
+![data-lifecycle(v2)](https://user-images.githubusercontent.com/55492381/115287237-50cd0080-a150-11eb-9f9f-198e9bf12288.jpg)
 
 ## Features
 ### Rooms
