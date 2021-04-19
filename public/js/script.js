@@ -1,4 +1,14 @@
 const socket = io();
+
+
+if (window.location.protocol.indexOf('https') == 0) {
+    var el = document.createElement('meta')
+    el.setAttribute('http-equiv', 'Content-Security-Policy')
+    el.setAttribute('content', 'upgrade-insecure-requests')
+    document.head.append(el)
+}
+
+
 const gridItem = document.querySelectorAll('.dndMap li')
 
 const room = Qs.parse(location.search, {
@@ -288,7 +298,6 @@ function sendAllDices(userName, message) {
 async function getData(url) {
     const response = await fetch(url);
     const data = await response.json();
-
     return data;
 }
 
