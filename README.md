@@ -57,33 +57,33 @@ This is a totally other concept then the previous two. I got inspired by Stan O 
     npm install
     ```  
 
-### Packages
+## Packages
 
 
-### Data lifecycle
+## Data lifecycle
 Not yet done... but something like this.  
 ![data-lifecycle](https://user-images.githubusercontent.com/55492381/114989155-7085cf80-9e97-11eb-914f-3cb6f717a63b.jpg)
 
-### Features
-#### Rooms
+## Features
+### Rooms
 Enter a room to use this application with just your friends
 
-#### Choose realtime position
+### Choose realtime position
 You can click on the grid map to change your position realtime. This way the other players know of your movements.
 
-#### Chat 
+### Chat 
 Share your notes in the chat
 
-#### Dice
+### Dice
 Use the dice function to throw the dice and calculate the result
 
 
-### API
-#### Which API did I use?
+## API
+### Which API did I use?
 In the chatbox you are able to throw some dice.  
 For this functionality I used the [Dice API](http://roll.diceapi.com/), It was just a litle bit easier then coding it myself. And I wanted to see if I could implement an API to learn from this progress.
 
-#### Fetching the API
+### Fetching the API
 Based on the dice and amount of dices it changes the fetch url.   
 So for example, I would choose the d20 die and I want to throw 3 of them. The endpoint results in /3d20.  
   
@@ -120,7 +120,7 @@ So for example, I would choose the d20 die and I want to throw 3 of them. The en
 
 ```
 
-#### API Response
+### API Response
 The api response with a succes and the thrown dices like this:  
 ```json
 {   
