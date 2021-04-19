@@ -39,7 +39,6 @@ io.on("connection", (socket) => {
 
         socket.on("location", (playerLocation) => {
 
-
             // connect with datasbase? 
             // save player object to database
 
@@ -51,8 +50,29 @@ io.on("connection", (socket) => {
 
             // Add message real time
             io.to(roomID).emit("location", playerLocation);
+
         });
 
+        socket.on("message", (msgObj) => {
+            // ads socket ID to message object
+            msgObj = {
+                userName: msgObj.userName,
+                message: msgObj.message,
+                socketID: socket.id,
+            };
+
+            // Add message real time
+            io.to(roomID).emit("message", msgObj);
+        });
+
+        io.to(roomID).emit("roomID", roomID);
+
+        socket.on("dice", (dice) => {
+            console.log(dice)
+
+            // Add message real time
+            io.to(roomID).emit("dice", dice);
+        });
 
     });
 

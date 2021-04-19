@@ -158,12 +158,42 @@
     </section>
     <section class="chatBox">
         <form class="usernameForm">
-            <label for="username"> Your name </label>
+            <label for="username"> You: </label>
             <input type="text" id="username" placeholder="Your name">
             <div class="chooseColor">
-                <label for="playerColor"> Choose your color:</label>
+                <label for="playerColor"> Your color:</label>
                 <input type="color" id="playerColor" name="playerColor">
             </div>
+        </form>
+        <div class="chatRoom">
+            <p class="roomID">Room key:</p>
+            <ul>
+
+            </ul>
+        </div>
+        <form class="dice">
+            <fieldset>
+                <label for="selectDice">Select your dice:</label>
+                <select name="selectDice" id="selectDice">
+                    <option value="d4">d4</option>
+                    <option value="d6">d6</option>
+                    <option value="d8">d8</option>
+                    <option value="d10">d10</option>
+                    <option value="d100">d100</option>
+                    <option value="d12">d12</option>
+                    <option value="d20" selected>d20</option>
+                </select>
+
+                <label for="amountDice"> amount</label>
+                <input type="number" name="amountDice" id="amountDice" placeholder="number of dice">
+            </fieldset>
+            <button type="submit" id="throwDice">Throw Dice</button>
+        </form>
+        <form class="chatBoxItem">
+            <label for="newMessage"> Message </label>
+            <!-- <textarea name="newMessages" id="newMessage" rows="3"></textarea> -->
+            <input id="newMessage" type="text" placeholder="message" />
+            <button type="submit">Send</button>
         </form>
     </section>
 </div>
