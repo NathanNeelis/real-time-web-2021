@@ -58,6 +58,10 @@ This is a totally other concept then the previous two. I got inspired by Stan O 
     ```  
 
 ## Packages
+[dontenv]()  
+[ejs]()  
+[express]()  
+[socket.io]()  
 
 
 ## Data lifecycle
@@ -66,7 +70,7 @@ Not yet done... but something like this.
 
 ## Features
 ### Rooms
-Enter a room to use this application with just your friends
+Enter a room to use this application with just your friends. 
 
 ### Choose realtime position
 You can click on the grid map to change your position realtime. This way the other players know of your movements.
@@ -161,17 +165,18 @@ Nice to have
 * [ ]  SHow all users online
 * [ ]  ..  
   
-Today:  
+## planning
+Today 19-04  
 * [x] Chatfunction
 * [x] Dice function
 * [ ] Update DLC diagram  
   
-Tommorow:  
+Tommorow 20-04  
 * [ ] Login with database (mongo or firebase?)
 * [ ] set background image
 * [ ] Admin per room?  
   
-Friday:   
+Friday 23-04  
 * [ ] Finish readme
 * [ ] Read rubric
 * [ ] Prepare exam  
