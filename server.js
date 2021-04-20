@@ -4,8 +4,31 @@ const app = express();
 const http = require("http").createServer(app);
 const io = require("socket.io")(http);
 const port = process.env.PORT || 8080;
+const firebase = require("firebase/app");
 
+// dotenv
 require("dotenv").config();
+
+// FIREBASE 
+require("firebase/auth");
+require("firebase/firestore");
+
+var firebaseConfig = {
+    apiKey: process.env.FIREBASE_apiKey,
+    authDomain: process.env.FIREBASE_authDomain,
+    projectId: process.env.FIREBASE_projectId,
+    storageBucket: process.env.FIREBASE_storageBucket,
+    messagingSenderId: process.env.FIREBASE_messagingSenderId,
+    appId: process.env.FIREBASE_appId,
+    measurementId: process.env.FIREBASE_measurementId
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
+
+
+
 
 
 // import routes

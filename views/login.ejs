@@ -8,13 +8,13 @@
     <link rel="stylesheet" href="style/style.css">
     <title>DnD playground</title>
 
-    <script src="js/loginScript.js" defer></script>
 </head>
 
 <body>
     <section class="loginformSection">
         <div class="loginformWrapper">
-            <form action="" class="loginform" name="loginForm">
+            <h2>Welcome to DnD Playground!</h2>
+            <form class="loginform deactivated" id="loginForm" name="loginForm">
                 <label for="username"> Username: </label>
                 <input type="text" id="username">
 
@@ -25,8 +25,17 @@
 
                 <button type="submit">Get a room</button>
             </form>
+            <div class="userloginWrapper">
+                <button id="googleLogin" class="userlogin">Login</button>
+                <button id="logout" class="userlogin hide">Logout</button>
+            </div>
         </div>
     </section>
+
+
+
+    <%- include('includes/firebase.ejs'); %>
+    <script src="js/loginScript.js"></script>
 
 </body>
 

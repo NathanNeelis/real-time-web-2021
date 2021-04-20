@@ -94,6 +94,9 @@ input[type=color] {
     height: 2rem;
 }
 
+.loginform {
+    transition: all .5s ease;
+}
 
 
 
@@ -368,6 +371,37 @@ input[type=color] {
 .selectedDie {
     font-style: italic;
     font-size: 80%;
+}
+
+
+.userloginWrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+.userlogin {
+    display: block;
+    margin: 1rem 1rem 1rem 0;
+    background: coral;
+    color: white;
+    border: 1px solid coral;
+    border-radius: .3rem;
+    padding: 1rem 2rem;
+    transition: all .5s ease;
+}
+
+.userlogin:hover {
+    background: white;
+    color: coral;
+
+}
+
+.deactivated {
+    opacity: 0;
+}
+
+.hide {
+    display: none;
 }
 
 
