@@ -156,6 +156,7 @@ The api response with a succes and the thrown dices like this:
 ```
 
 ## Project status 
+Must have  
 * [x] Render hello world server side   
 * [x] Decide on concept
 * [ ] Work out data lifecycle
@@ -181,7 +182,7 @@ Today 19-04
 * [x] Update DLC diagram  
   
 Tommorow 20-04  
-* [ ] Login with database (mongo or firebase?)
+* [x] Login with database (mongo or firebase?)
 * [ ] set background image
 * [ ] Admin per room?  
 * [ ] Update DLC diagram 
@@ -198,3 +199,4 @@ Friday 23-04
 
 ## Resources
 [course materials](https://github.com/cmda-minor-web/real-time-web-2021)  
+[firebase](https://www.youtube.com/watch?v=Dbq6yr9XKX8)  
