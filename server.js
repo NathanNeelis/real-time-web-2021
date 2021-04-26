@@ -65,7 +65,7 @@ io.on("connection", (socket) => {
         console.log('you have joined id:', roomID)
 
 
-        socket.on("location", async (playerLocation) => {
+        socket.on("location", (playerLocation) => {
 
             // add room to player object
             playerLocation = {
@@ -80,7 +80,7 @@ io.on("connection", (socket) => {
             // const docRef = db.collection(roomID).doc(playerLocation.username);
             // await docRef.set(playerLocation);
 
-            await db.collection(roomID).doc(playerLocation.username).set(playerLocation);
+            db.collection(roomID).doc(playerLocation.username).set(playerLocation);
 
             // make a validation on grid
             if (playerLocation.column <= 15 && playerLocation.row <= 10) {
