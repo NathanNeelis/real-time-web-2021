@@ -13,6 +13,21 @@ You can move around in the map by clicking on the grid. There is also a chat fun
 ![dnd-playground2](https://user-images.githubusercontent.com/55492381/116139937-e4fe1100-a6d6-11eb-926e-6d62b8451fa5.gif)
 
 ## Table of Contents  
+[Description](https://github.com/NathanNeelis/real-time-web-2021#description)  
+[Assignment](https://github.com/NathanNeelis/real-time-web-2021#assignment)  
+[Concepts](https://github.com/NathanNeelis/real-time-web-2021#concepts)  
+[Getting started](https://github.com/NathanNeelis/real-time-web-2021#getting-started)  
+[Packages](https://github.com/NathanNeelis/real-time-web-2021#packages)  
+[Data Life Cycle](https://github.com/NathanNeelis/real-time-web-2021#data-lifecycle)  
+[Real-time events](https://github.com/NathanNeelis/real-time-web-2021#realtime-events)  
+[Features](https://github.com/NathanNeelis/real-time-web-2021#features)  
+[Login](https://github.com/NathanNeelis/real-time-web-2021#login)  
+[Database](https://github.com/NathanNeelis/real-time-web-2021#database---firestore)  
+[API](https://github.com/NathanNeelis/real-time-web-2021#api)  
+[Project status](https://github.com/NathanNeelis/real-time-web-2021#project-status)  
+[License](https://github.com/NathanNeelis/real-time-web-2021#license)  
+[Resources](https://github.com/NathanNeelis/real-time-web-2021#resources)  
+
 
 ## Assignment
 This is a readme driven project. Which means that I first figure out what I want to make and document this in my readme. The application I am making is based on user interaction and works real time for multiple users. 
@@ -88,7 +103,8 @@ This is a totally other concept then the previous two. I got inspired by Stan O 
 
 
 ## Data lifecycle
-Not yet done... but something like this. 
+Below here you can see the progress in the Data Life Cycle.  
+As we were asked to think about the data life cycle before we started coding this there are updated versions in this diagram. Looking through them you can actually follow my progress during this course.  
 
 <details>
   <summary>DLC Versie 1</summary
@@ -269,3 +285,6 @@ Friday 23-04
 [firestore node](https://www.youtube.com/watch?v=Z87OZtIYC_0)  
 [firebase client](https://www.youtube.com/watch?v=UZqXcoqC95E&list=PL4cUxeGkcC9itfjle0ji1xOZ2cjRGY_WB&index=5) Net Ninja   
 [firestore id to heroku](https://stackoverflow.com/questions/39492587/escaping-issue-with-firebase-privatekey-as-a-heroku-config-variable)  
+[example DnD map](https://2minutetabletop.com/product/dungeon-jail/)  
+[dice api documentation](http://roll.diceapi.com/)  
+[socket io documentation](https://socket.io/docs/v4)  
