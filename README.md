@@ -2,13 +2,17 @@
 
 ### View the app
 :earth_americas:  [live website](https://dnd-playground.herokuapp.com/)  
+  
+
 
 ## Description
 DnD Playground  
 This app is made for Dungeon and Dragons groups that have use for an online tool.
 Since Corona we are limited in playing DnD in groups, so often groups go online to continue their quests online.
 In this app you can upload your own map and your friends can join you. Everyone gets their character on screen with a collored dot.
-You can move around in the map by clicking on the grid. There is also a chat function that lets you share your notes and roll the dice using a dice API.
+You can move around in the map by clicking on the grid. There is also a chat function that lets you share your notes and roll the dice using a dice API.  
+  
+![dnd-playground](https://user-images.githubusercontent.com/55492381/116139103-f09d0800-a6d5-11eb-95de-0efab4126f61.gif)
 
 ## Table of Contents  
 
@@ -66,9 +70,9 @@ This is a totally other concept then the previous two. I got inspired by Stan O 
     FB_TYPE= TYPE  
     FB_project_id= PROJECT ID  
     FB_private_key_id= PRIVATE KEY ID  
-    FB_private_key= -----BEGIN PRIVATE KEY----------END PRIVATE KEY-----  
+    FB_private_key= PRIVATE KEY
     FB_client_email= CLIENT EMAIL  
-    FB_client_id= __CLIENT ID__  
+    FB_client_id= CLIENT ID   
     FB_auth_uri= AUTH URI  
     FB_token_uri= TOKEN URI  
     FB_auth_provider_x509_cert_url= SOME URL  
@@ -134,7 +138,10 @@ Share your notes in the chat
 Use the dice function to throw the dice and calculate the result
 
 ## Login
-To use this application you have to login. You can login with your google credentials. For this login process I used the firebase authentication method that easily lets me use the Google authentication. Others as well, but I choose to only use google for this prototype.
+To use this application you have to login. You can login with your google credentials. For this login process I used the firebase authentication method that easily lets me use the Google authentication. Others as well, but I choose to only use google for this prototype.  
+  
+![login](https://user-images.githubusercontent.com/55492381/116138926-bc294c00-a6d5-11eb-8d51-0486852e7e35.gif)  
+  
 
 ## Database - Firestore
 Before I used the firestore database, the data was lost on a disconnect. But with the firestore database you can continue where you left. If you enter a room, the firestore database will look through all my databases if there is one matching your room name. If there is, it will add the last player locations in the map. So if you refresh or close your windows by accident you can always reconnect with the same room and you can continue the game.  
@@ -211,7 +218,7 @@ The api response with a succes and the thrown dices like this:
 ```
 
 ## Project status 
-Must have  
+#### Must have  
 * [x] Render hello world server side   
 * [x] Decide on concept
 * [x] Work out data lifecycle
@@ -225,10 +232,13 @@ Must have
 * [x] [Dice API](http://roll.diceapi.com/)
 * [x] Dice function in chatroom
   
-Nice to have  
-* [ ]  Camera function?
-* [ ]  SHow all users online
-* [ ]  ..  
+#### Nice to have  
+* [ ] Show all users in the room  
+* [ ] Save chat history in firestore
+* [ ] Delete the firebase database if all players disconnected  
+* [ ] Admin per created room
+* [ ] More functions for the Dungeon master
+* [ ] Camera function to see who you are playing with 
   
 ## planning
 Today 19-04  
@@ -243,9 +253,9 @@ Tommorow 20-04
 * [x] Update DLC diagram 
   
 Friday 23-04  
-* [ ] Finish readme
-* [ ] Read rubric
-* [ ] Prepare exam  
+* [x] Finish readme
+* [x] Read rubric
+* [x] Prepare exam  
   
 
 
