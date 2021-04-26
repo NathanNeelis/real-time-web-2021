@@ -80,7 +80,7 @@ io.on("connection", (socket) => {
             // const docRef = db.collection(roomID).doc(playerLocation.username);
             // await docRef.set(playerLocation);
 
-            const res = await db.collection(roomID).doc(playerLocation.username).set(playerLocation);
+            await db.collection(roomID).doc(playerLocation.username).set(playerLocation);
 
             // make a validation on grid
             if (playerLocation.column <= 15 && playerLocation.row <= 10) {
