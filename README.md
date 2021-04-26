@@ -106,32 +106,33 @@ So for example, I would choose the d20 die and I want to throw 3 of them. The en
 
 
 ```javascript
-    // if everything is ok
-    else if (selectedDice && amount) {
 
-        const username = localStorage.getItem("username");
-        const endpoint = "http://roll.diceapi.com/json/"
+socket.on("dice", (dice) => {
+            // FETCH DICE API ON SERVER INSTEAD OF CLIENT
+            const endpoint = "http://roll.diceapi.com/json/"
+            const username = dice.username
 
-        // fetch dice api
-        const url = endpoint + amount + selectedDie
+            // fetch dice api
+            const url = endpoint + dice.amount + dice.dice
 
-        // result in const
-        getData(url)
-            .then(data => {
-                const dice = {
-                    dice: selectedDie,
-                    amount: amount,
-                    result: data.dice,
-                    username: username
-                };
 
-                socket.emit("dice", dice);
-            })
+            getData(url, username)
+                .then(data => {
+                    // result in const dice
+                    const dice = {
+                        result: data.dice,
+                        username: username
+                    };
 
-        amount.value = "";
+                    // Add message real time
+                    io.to(roomID).emit("dice", dice);
+                })
     }
 
 ```
+
+### API HTTP Troubles
+On the server I had some troubles with fetching this API live. Because the API runs on HTTP and my live application on HTTPS. This gave some issues, and I got the feedback to try fetching the API on server side. Thats what ive done now.
 
 ### API Response
 The api response with a succes and the thrown dices like this:  
@@ -159,7 +160,7 @@ The api response with a succes and the thrown dices like this:
 Must have  
 * [x] Render hello world server side   
 * [x] Decide on concept
-* [ ] Work out data lifecycle
+* [x] Work out data lifecycle
 * [x] **Nut to crack:** user in grid-layout choosing different position 
 * [x] Create a grid layout 
 * [x] Add users -- how to multiple?
@@ -185,7 +186,7 @@ Tommorow 20-04
 * [x] Login with database (mongo or firebase?)
 * [ ] set background image
 * [ ] Admin per room?  
-* [ ] Update DLC diagram 
+* [x] Update DLC diagram 
   
 Friday 23-04  
 * [ ] Finish readme
@@ -200,3 +201,8 @@ Friday 23-04
 ## Resources
 [course materials](https://github.com/cmda-minor-web/real-time-web-2021)  
 [firebase](https://www.youtube.com/watch?v=Dbq6yr9XKX8)  
+[firebase auth users](https://firebase.google.com/docs/auth/web/manage-users)  
+[firebase libraries](https://firebase.google.com/docs/web/setup?authuser=1#available-libraries)  
+[dotenv firebase admin sdk](https://stackoverflow.com/questions/56277661/is-it-possible-to-store-a-json-file-to-an-env-variable-with-dotenv)  
+[firestore node](https://www.youtube.com/watch?v=Z87OZtIYC_0)  
+[firebase client](https://www.youtube.com/watch?v=UZqXcoqC95E&list=PL4cUxeGkcC9itfjle0ji1xOZ2cjRGY_WB&index=5) Net Ninja   

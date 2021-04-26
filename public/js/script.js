@@ -1,11 +1,15 @@
-// Some code to fix fetching from HTTP on a HTTPS website.
-// resource: https://stackoverflow.com/a/63044435/14601099
-if (window.location.protocol.indexOf('https') == 0) {
-    var el = document.createElement('meta')
-    el.setAttribute('http-equiv', 'Content-Security-Policy')
-    el.setAttribute('content', 'upgrade-insecure-requests')
-    document.head.append(el)
-}
+// CHECK IF USER IS LOGGED IN
+firebase.auth().onAuthStateChanged(function (user) {
+    if (user) {
+        // User is signed in.
+        // console.log('hello', user)
+    } else {
+        // No user is signed in.
+        console.log('not signed in')
+        window.location.href = "/";
+    }
+});
+
 
 
 const socket = io();
@@ -16,8 +20,19 @@ const room = Qs.parse(location.search, {
     ignoreQueryPrefix: true
 });
 
+
+// CHECKS IF THERE ARE PLAYER LOCATION IN DATABASE AND EMITS ROOM NAME
 if (room) {
     socket.emit("roomID", room);
+
+    // fetch existing player locations
+    db.collection(room.roomid).get()
+        .then(snapshot => {
+            snapshot.docs.forEach(doc => {
+                newLocation(doc.data());
+            })
+        })
+
 }
 
 // Event listener for each grid item
@@ -37,7 +52,8 @@ gridItem.forEach(element => {
                 column: element.dataset.column,
                 row: element.dataset.row,
                 color: colorSelected,
-                username: username
+                username: username,
+                room: room
             }
 
             socket.emit("location", playerObj);
@@ -48,6 +64,9 @@ gridItem.forEach(element => {
 socket.on("location", (playerObj) => {
     newLocation(playerObj);
 });
+
+
+
 
 
 // CREATE LOCATION FOR ALL PLAYERS 
@@ -202,24 +221,29 @@ function sendDice(amount, selectedDie) {
     else if (selectedDice && amount) {
 
         const username = localStorage.getItem("username");
-        const endpoint = "http://roll.diceapi.com/json/"
+        // const endpoint = "http://roll.diceapi.com/json/"
 
         // fetch dice api
-        const url = endpoint + amount + selectedDie
+        // const url = endpoint + amount + selectedDie
 
         // result in const
-        getData(url)
-            .then(data => {
-                const dice = {
-                    dice: selectedDie,
-                    amount: amount,
-                    result: data.dice,
-                    username: username
-                };
+        // getData(url)
+        //     .then(data => {
+        //         const dice = {
+        //             dice: selectedDie,
+        //             amount: amount,
+        //             result: data.dice,
+        //             username: username
+        //         };
 
-                socket.emit("dice", dice);
-            })
-
+        //         socket.emit("dice", dice);
+        //     })
+        const dice = {
+            dice: selectedDie,
+            amount: amount,
+            username: username
+        }
+        socket.emit("dice", dice);
         amount.value = "";
     }
 
@@ -232,7 +256,7 @@ function sendDice(amount, selectedDie) {
 
 // dice socket creating die messages
 socket.on("dice", (dice) => {
-    const selectedDie = dice.dice
+    const selectedDie = dice.result[0].type
     const result = dice.result
     let resultArray = result.map(a => a.value);
     const username = dice.username

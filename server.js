@@ -4,37 +4,40 @@ const app = express();
 const http = require("http").createServer(app);
 const io = require("socket.io")(http);
 const port = process.env.PORT || 8080;
-const firebase = require("firebase/app");
+const fetch = require('node-fetch');
 
 // dotenv
 require("dotenv").config();
 
-// FIREBASE 
-require("firebase/auth");
-require("firebase/firestore");
 
-var firebaseConfig = {
-    apiKey: process.env.FIREBASE_apiKey,
-    authDomain: process.env.FIREBASE_authDomain,
-    projectId: process.env.FIREBASE_projectId,
-    storageBucket: process.env.FIREBASE_storageBucket,
-    messagingSenderId: process.env.FIREBASE_messagingSenderId,
-    appId: process.env.FIREBASE_appId,
-    measurementId: process.env.FIREBASE_measurementId
-};
+// FIREBASE Database
+let fb_Config = {
+    TYPE: process.env.FB_TYPE,
+    project_id: process.env.FB_project_id,
+    private_key_id: process.env.FB_private_key_id,
+    private_key: process.env.FB_private_key,
+    client_email: process.env.FB_client_email,
+    client_id: process.env.FB_client_id,
+    auth_uri: process.env.FB_auth_uri,
+    token_uri: process.env.FB_token_uri,
+    auth_provider_x509_cert_url: process.env.FB_auth_provider_x509_cert_url,
+    client_x509_cert_url: process.env.FB_client_x509_cert_url,
+}
 
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+const admin = require("firebase-admin");
 
+admin.initializeApp({
+    credential: admin.credential.cert(fb_Config)
+});
 
-
-
+const db = admin.firestore();
 
 
 // import routes
 const login = require('./renderFunctions/login');
 const playground = require('./renderFunctions/playground');
 const room = require('./renderFunctions/room');
+const getData = require('./utils/getData')
 
 
 // EXPRESS ROUTeS
@@ -44,36 +47,57 @@ app.use(express.static(path.resolve("public")));
 app.get("/", login)
     .get("/room", room)
     .get("/playground", playground)
-// app.post("/", postLogin)
+
 
 // WEBSOCKET
 io.on("connection", (socket) => {
 
+    let roomID = '';
     console.log(`User with this socket ID: ${socket.id} just connected`);
 
     // create room
     socket.on("roomID", (room) => {
 
-        const roomID = room.roomid
+        roomID = room.roomid
 
         // connect to room
         socket.join(roomID);
         console.log('you have joined id:', roomID)
 
-        socket.on("location", (playerLocation) => {
 
-            // connect with datasbase? 
-            // save player object to database
+        socket.on("location", async (playerLocation) => {
 
-            // extract player object from database
-            // send player object back to client
+            // add room to player object
+            playerLocation = {
+                username: playerLocation.username,
+                room: roomID,
+                color: playerLocation.color,
+                column: playerLocation.column,
+                row: playerLocation.row
+            };
+
+            // Save playerLocation to specific room collection in database
+            const docRef = db.collection(roomID).doc(playerLocation.username);
+            await docRef.set(playerLocation);
+
 
             // make a validation on grid
-            console.log('player location', playerLocation)
-
             if (playerLocation.column <= 15 && playerLocation.row <= 10) {
-                // Add message real time
-                io.to(roomID).emit("location", playerLocation);
+
+                // extract player object from database
+                db.collection(roomID).get()
+                    .then(snapshot => {
+                        snapshot.docs.forEach(doc => {
+                            // send player object back to client
+                            console.log('data from firestore', doc.data())
+                            io.to(roomID).emit("location", playerLocation);
+                        })
+                    })
+                    .catch(err => {
+                        console.error('Error in getting document from FB', err);
+                        process.exit();
+                    })
+
             } else {
                 console.error('there has been an error in the playerlocation', playerLocation)
             }
@@ -98,16 +122,37 @@ io.on("connection", (socket) => {
         io.to(roomID).emit("roomID", roomID);
 
         socket.on("dice", (dice) => {
-            console.log(dice)
 
-            // Add message real time
-            io.to(roomID).emit("dice", dice);
+            // FETCH DICE API ON SERVER INSTEAD OF CLIENT
+            const endpoint = "http://roll.diceapi.com/json/"
+            const username = dice.username
+
+            // fetch dice api
+            const url = endpoint + dice.amount + dice.dice
+
+
+            getData(url, username)
+                .then(data => {
+                    // result in const dice
+                    const dice = {
+                        result: data.dice,
+                        username: username
+                    };
+
+                    // Add message real time
+                    io.to(roomID).emit("dice", dice);
+                })
         });
 
     });
 
+
     socket.on('disconnect', () => { // on disconnect
-        console.log('user disconnected')
+        console.log('user disconnected', roomID)
+
+        // TO DO
+        // if 0 players remain in room, delete all data
+        // db.collection(roomID)
     })
 
 });
