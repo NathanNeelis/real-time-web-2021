@@ -49,7 +49,7 @@ This is a totally other concept then the previous two. I got inspired by Stan O 
 
 2. Clone this repo  
     ```bash
-    git clone https://github.com/NathanNeelis/progressive-web-apps-2021.git
+    git clone https://github.com/NathanNeelis/real-time-web-2021.git
     ```   
 
 3. install packages  
@@ -57,11 +57,32 @@ This is a totally other concept then the previous two. I got inspired by Stan O 
     npm install
     ```  
 
+4. Start the app on localhost:8080 
+    ```bash
+    npm start
+    ```  
+5. Here is an example of the dotenv variables
+    ```bash
+    FB_TYPE= TYPE  
+    FB_project_id= PROJECT ID  
+    FB_private_key_id= PRIVATE KEY ID  
+    FB_private_key= -----BEGIN PRIVATE KEY----------END PRIVATE KEY-----  
+    FB_client_email= CLIENT EMAIL  
+    FB_client_id= __CLIENT ID__  
+    FB_auth_uri= AUTH URI  
+    FB_token_uri= TOKEN URI  
+    FB_auth_provider_x509_cert_url= SOME URL  
+    FB_client_x509_cert_url= SOME URL  
+    ``` 
+
+
 ## Packages
-[dontenv]()  
-[ejs]()  
-[express]()  
-[socket.io]()  
+[dontenv](https://www.npmjs.com/package/dotenv)  
+[ejs](https://www.npmjs.com/package/ejs)  
+[express](https://www.npmjs.com/package/express)  
+[firebase-admin](https://www.npmjs.com/package/firebase-admin)  
+[socket.io](https://www.npmjs.com/package/socket.io)  
+[node-fetch](https://www.npmjs.com/package/node-fetch)  
 
 
 ## Data lifecycle
@@ -74,8 +95,30 @@ Not yet done... but something like this.
 
 </details>
   
-Version 2  
+
+<details>
+  <summary>DLC Versie 2</summary
+
 ![data-lifecycle(v2)](https://user-images.githubusercontent.com/55492381/115287237-50cd0080-a150-11eb-9f9f-198e9bf12288.jpg)
+
+</details>
+
+Version 3 
+
+
+## Realtime events
+### Create/join a room
+Create a room with your own made up key. Others can join this room by entering this key as well.
+
+### Moving on the map
+By clicking in the grid, your location (shown with a collered dot) moves to the box you selected. Others in the room will see this change real time as well.
+
+### Messages
+You can share your messages and notes in the chatroom. The messages are shown realtime.
+
+### Roll the dice
+Select your dice and the amount of them, roll them and see the result real time in the chatbox. Others will see your result as well, so there is no cheating!
+
 
 ## Features
 ### Rooms
@@ -89,6 +132,17 @@ Share your notes in the chat
 
 ### Dice
 Use the dice function to throw the dice and calculate the result
+
+## Login
+To use this application you have to login. You can login with your google credentials. For this login process I used the firebase authentication method that easily lets me use the Google authentication. Others as well, but I choose to only use google for this prototype.
+
+## Database - Firestore
+Before I used the firestore database, the data was lost on a disconnect. But with the firestore database you can continue where you left. If you enter a room, the firestore database will look through all my databases if there is one matching your room name. If there is, it will add the last player locations in the map. So if you refresh or close your windows by accident you can always reconnect with the same room and you can continue the game.  
+  
+If there isn't a matching database for this room, it will create one on the first player location move. Every move gets updated in the database. Then every move the sockets fetches this data from the database again and updates the dom via the client socket.  
+  
+The database looks like this:  
+![Schermafbeelding 2021-04-26 om 21 15 29](https://user-images.githubusercontent.com/55492381/116138016-994a6800-a6d4-11eb-89e6-363728edb8f9.png)  
 
 
 ## API
