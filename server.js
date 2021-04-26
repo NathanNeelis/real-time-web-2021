@@ -74,15 +74,12 @@ io.on("connection", (socket) => {
                 row: playerLocation.row
             };
 
-
-
-            // Save playerLocation to specific room collection in database
+            // Save playerLocation to specific room collection in firestore
             await db.collection(roomID).doc(playerLocation.username).set(playerLocation);
 
             // make a validation on grid
             if (playerLocation.column <= 15 && playerLocation.row <= 10) {
-
-                // extract player object from database
+                // fetch player object from firestore
                 db.collection(roomID).get()
                     .then(snapshot => {
                         snapshot.docs.forEach(doc => {
@@ -100,11 +97,14 @@ io.on("connection", (socket) => {
                 console.error('there has been an error in the playerlocation', playerLocation)
             }
 
-
+            io.to(roomID).emit("roomID", roomID);
 
 
         });
 
+
+
+        // CHATROOM
         socket.on("message", (msgObj) => {
             // ads socket ID to message object
             msgObj = {
@@ -117,8 +117,9 @@ io.on("connection", (socket) => {
             io.to(roomID).emit("message", msgObj);
         });
 
-        io.to(roomID).emit("roomID", roomID);
 
+
+        // DICE IN CHATROOM
         socket.on("dice", (dice) => {
 
             // FETCH DICE API ON SERVER INSTEAD OF CLIENT
@@ -141,6 +142,7 @@ io.on("connection", (socket) => {
                     io.to(roomID).emit("dice", dice);
                 })
         });
+
 
     });
 
