@@ -1,6 +1,6 @@
 const username = document.querySelector('input#username')
 const color = document.querySelector('input#playerColor')
-const sendBtn = document.querySelector(".loginform button")
+const sendBtn = document.getElementById('getRoom')
 
 sendBtn.addEventListener("click", (e) => {
     e.preventDefault()
@@ -26,16 +26,16 @@ loginBtn.addEventListener("click", googleSignIn)
 const logoutBtn = document.getElementById("logout")
 logoutBtn.addEventListener("click", signOut)
 
-const userform = document.getElementById("loginForm")
+const userform = document.getElementById("loginFormWrapHide")
 
 
-function googleSignIn() {
+function googleSignIn(e) {
+
+    e.preventDefault()
+
     var provider = new firebase.auth.GoogleAuthProvider();
     firebase.auth().signInWithPopup(provider)
         .then(result => {
-            console.log(result.user)
-            console.log(result.user.displayName)
-            console.log("login succes")
             localStorage.setItem("username", result.user.displayName);
             username.value = result.user.displayName
         })
@@ -45,13 +45,17 @@ function googleSignIn() {
         })
 }
 
-function signOut() {
+function signOut(e) {
+
+    e.preventDefault()
+
     console.log('logout')
     firebase.auth().signOut()
         .then(() => {
             console.log('user has been signed out')
             loginBtn.classList.remove("hide")
             logoutBtn.classList.add("hide")
+            sendBtn.classList.add("hide")
             userform.classList.add("deactivated")
         })
         .catch(err => {
@@ -62,12 +66,11 @@ function signOut() {
 firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
         // User is signed in.
-        console.log('hello', user)
-
         userform.classList.remove("deactivated")
 
         loginBtn.classList.add("hide")
         logoutBtn.classList.remove("hide")
+        sendBtn.classList.remove("hide")
     } else {
         // No user is signed in.
         console.log('not signed in')

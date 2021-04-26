@@ -14,21 +14,26 @@
     <section class="loginformSection">
         <div class="loginformWrapper">
             <h2>Welcome to DnD Playground!</h2>
-            <form class="loginform deactivated" id="loginForm" name="loginForm">
-                <label for="username"> Username: </label>
-                <input type="text" id="username">
+            <form id="loginForm" name="loginForm">
+                <div class="loginform deactivated" id="loginFormWrapHide">
+                    <label for="username"> Username: </label>
+                    <input type="text" id="username">
 
-                <div class="chooseColor">
-                    <label for="playerColor"> Choose your color:</label>
-                    <input type="color" id="playerColor" name="playerCoor">
+                    <div class="chooseColor">
+                        <label for="playerColor"> Choose your color:</label>
+                        <input type="color" id="playerColor" name="playerCoor">
+                    </div>
                 </div>
 
-                <button type="submit">Get a room</button>
+
+
+
+                <div class="userloginWrapper">
+                    <button class="userlogin hide" id="getRoom" type="submit">Get a room</button>
+                    <button id="googleLogin" class="userlogin">Login</button>
+                    <button id="logout" class="userlogin hide">Logout</button>
+                </div>
             </form>
-            <div class="userloginWrapper">
-                <button id="googleLogin" class="userlogin">Login</button>
-                <button id="logout" class="userlogin hide">Logout</button>
-            </div>
         </div>
     </section>
 
