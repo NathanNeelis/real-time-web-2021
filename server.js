@@ -25,7 +25,6 @@ let fb_Config = {
 }
 
 const admin = require("firebase-admin");
-
 admin.initializeApp({
     credential: admin.credential.cert(fb_Config)
 });
@@ -88,7 +87,7 @@ io.on("connection", (socket) => {
                     .then(snapshot => {
                         snapshot.docs.forEach(doc => {
                             // send player object back to client
-                            console.log('data from firestore', doc.data())
+                            // console.log('data from firestore', doc.data())
                             io.to(roomID).emit("location", playerLocation);
                         })
                     })
