@@ -2,8 +2,6 @@
 
 ### View the app
 :earth_americas:  [live website](https://dnd-playground.herokuapp.com/)  
-  
-
 
 ## Description
 DnD Playground  
@@ -12,7 +10,7 @@ Since Corona we are limited in playing DnD in groups, so often groups go online 
 In this app you can upload your own map and your friends can join you. Everyone gets their character on screen with a collored dot.
 You can move around in the map by clicking on the grid. There is also a chat function that lets you share your notes and roll the dice using a dice API.  
   
-![dnd-playground](https://user-images.githubusercontent.com/55492381/116139103-f09d0800-a6d5-11eb-95de-0efab4126f61.gif)
+![dnd-playground2](https://user-images.githubusercontent.com/55492381/116139937-e4fe1100-a6d6-11eb-926e-6d62b8451fa5.gif)
 
 ## Table of Contents  
 
@@ -107,8 +105,8 @@ Not yet done... but something like this.
 
 </details>
 
-Version 3 
-
+Version 3 - DEF version
+![data-lifecycle(v3)](https://user-images.githubusercontent.com/55492381/116142689-80dd4c00-a6da-11eb-8d36-10e35839e8f5.jpg)
 
 ## Realtime events
 ### Create/join a room
