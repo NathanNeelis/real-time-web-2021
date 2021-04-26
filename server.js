@@ -4,6 +4,7 @@ const app = express();
 const http = require("http").createServer(app);
 const io = require("socket.io")(http);
 const port = process.env.PORT || 8080;
+const compression = require('compression');
 
 // dotenv
 require("dotenv").config();
@@ -40,8 +41,8 @@ const getData = require('./utils/getData')
 
 
 // EXPRESS ROUTeS
-app.use(express.static(path.resolve("public")));
-
+app.use(express.static(path.resolve("public")))
+    .use(compression());
 // Routing
 app.get("/", login)
     .get("/room", room)

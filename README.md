@@ -100,6 +100,7 @@ This is a totally other concept then the previous two. I got inspired by Stan O 
 [firebase-admin](https://www.npmjs.com/package/firebase-admin)  
 [socket.io](https://www.npmjs.com/package/socket.io)  
 [node-fetch](https://www.npmjs.com/package/node-fetch)  
+[compression](https://www.npmjs.com/package/compression)  
 
 
 ## Data lifecycle
