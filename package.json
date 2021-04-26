@@ -1,7 +1,7 @@
 {
   "name": "real-time-web-2021",
   "version": "1.0.0",
-  "description": "### View the app :earth_americas:  [live website]()",
+  "description": "DnD helper app",
   "main": "server.js",
   "dependencies": {
     "dotenv": "^8.2.0",
