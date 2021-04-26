@@ -60,6 +60,7 @@ gridItem.forEach(element => {
                 room: room
             }
 
+            console.log('location on click', playerObj)
             socket.emit("location", playerObj);
         }
     }
