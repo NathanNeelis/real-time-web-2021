@@ -57,7 +57,6 @@ gridItem.forEach(element => {
                 row: element.dataset.row,
                 color: colorSelected,
                 username: username,
-                room: room
             }
 
             console.log('location on click', playerObj)
