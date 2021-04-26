@@ -77,9 +77,10 @@ io.on("connection", (socket) => {
             };
 
             // Save playerLocation to specific room collection in database
-            const docRef = db.collection(roomID).doc(playerLocation.username);
-            await docRef.set(playerLocation);
+            // const docRef = db.collection(roomID).doc(playerLocation.username);
+            // await docRef.set(playerLocation);
 
+            const res = await db.collection(roomID).doc(playerLocation.username).set(playerLocation);
 
             // make a validation on grid
             if (playerLocation.column <= 15 && playerLocation.row <= 10) {
