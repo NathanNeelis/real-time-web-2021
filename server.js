@@ -66,6 +66,7 @@ io.on("connection", (socket) => {
 
 
         socket.on("location", (playerLocation) => {
+            console.log('server side player location ', playerLocation)
 
             // add room to player object
             playerLocation = {
@@ -75,6 +76,8 @@ io.on("connection", (socket) => {
                 column: playerLocation.column,
                 row: playerLocation.row
             };
+
+
 
             // Save playerLocation to specific room collection in database
             // const docRef = db.collection(roomID).doc(playerLocation.username);
