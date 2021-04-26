@@ -97,7 +97,7 @@ io.on("connection", (socket) => {
                 console.error('there has been an error in the playerlocation', playerLocation)
             }
 
-            io.to(roomID).emit("roomID", roomID);
+
 
 
         });
@@ -143,7 +143,7 @@ io.on("connection", (socket) => {
                 })
         });
 
-
+        io.to(roomID).emit("roomID", roomID);
     });
 
 
