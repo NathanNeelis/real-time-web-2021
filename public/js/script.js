@@ -4,9 +4,6 @@ firebase.auth().onAuthStateChanged(function (user) {
         // User is signed in.
         // console.log('hello', user)
 
-        console.log(user.displayName)
-
-
         const socket = io();
         const gridItem = document.querySelectorAll('.dndMap li')
 
