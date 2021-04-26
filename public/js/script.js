@@ -49,7 +49,6 @@ gridItem.forEach(element => {
             const username = localStorage.getItem("username");
             const colorSelected = localStorage.getItem("selectedColor")
 
-
             // do something realtime
             // console.log('Column', element.dataset.column, '   ', 'row', element.dataset.row)
             const playerObj = {
@@ -58,8 +57,6 @@ gridItem.forEach(element => {
                 color: colorSelected,
                 username: username,
             }
-
-            console.log('location on click', playerObj)
             socket.emit("location", playerObj);
         }
     }
