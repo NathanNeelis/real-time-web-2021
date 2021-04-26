@@ -206,3 +206,4 @@ Friday 23-04
 [dotenv firebase admin sdk](https://stackoverflow.com/questions/56277661/is-it-possible-to-store-a-json-file-to-an-env-variable-with-dotenv)  
 [firestore node](https://www.youtube.com/watch?v=Z87OZtIYC_0)  
 [firebase client](https://www.youtube.com/watch?v=UZqXcoqC95E&list=PL4cUxeGkcC9itfjle0ji1xOZ2cjRGY_WB&index=5) Net Ninja   
+[firestore id to heroku](https://stackoverflow.com/questions/39492587/escaping-issue-with-firebase-privatekey-as-a-heroku-config-variable)  

@@ -10,27 +10,24 @@ require("dotenv").config();
 
 
 // FIREBASE Database
-// let fb_Config = {
-//     // TYPE: process.env.FB_TYPE,
-//     project_id: process.env.FB_project_id,
-//     // private_key_id: process.env.FB_private_key_id,
-//     // private_key: process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, '\n'),
-//     client_email: process.env.FB_client_email,
-//     // client_id: process.env.FB_client_id,
-//     // auth_uri: process.env.FB_auth_uri,
-//     // token_uri: process.env.FB_token_uri,
-//     // auth_provider_x509_cert_url: process.env.FB_auth_provider_x509_cert_url,
-//     // client_x509_cert_url: process.env.FB_client_x509_cert_url,
-// }
+let fb_Config = {
+    TYPE: process.env.FB_TYPE,
+    project_id: process.env.FB_project_id,
+    private_key_id: process.env.FB_private_key_id,
+    private_key: process.env.FB_private_key.replace(/\\n/g, '\n'),
+    client_email: process.env.FB_client_email,
+    client_id: process.env.FB_client_id,
+    auth_uri: process.env.FB_auth_uri,
+    token_uri: process.env.FB_token_uri,
+    auth_provider_x509_cert_url: process.env.FB_auth_provider_x509_cert_url,
+    client_x509_cert_url: process.env.FB_client_x509_cert_url
+
+}
 
 const admin = require("firebase-admin");
 
 admin.initializeApp({
-    credential: admin.credential.cert({
-        project_id: process.env.FB_project_id,
-        private_key: process.env.FB_private_key.replace(/\\n/g, '\n'),
-        client_email: process.env.FB_client_email,
-    })
+    credential: admin.credential.cert(fb_Config)
 });
 
 const db = admin.firestore();

@@ -32,6 +32,10 @@ if (room) {
                 newLocation(doc.data());
             })
         })
+        .catch(err => {
+            console.error('Error in finding locations in DB', err);
+            process.exit();
+        })
 
 }
 
